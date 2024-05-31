@@ -1,6 +1,4 @@
-This project demonstrates how <a href="https://github.com/AndriiHeonia/hull" target="_blank">hull.js</a>, <a href="https://github.com/AndriiHeonia/img-bfs">img-bfs</a> and <a href="https://github.com/AndriiHeonia/disjoint-set">disjoint-set</a> libraries can be used.
-
-Pixfinder detects objects in the image. It was developed for the demo purpose only, it's not meant to be used in production.
+Pixfinder detects objects in the image by their color. It was developed for the demo purpose only, it's not meant to be used in production.
 
 ## Table of Contents
 
@@ -17,36 +15,37 @@ Pixfinder detects objects in the image. It was developed for the demo purpose on
 ## Demos
 
 See live demos here:
-- <a href="http://andriiheonia.github.io/pixfinder/planes" target="_blank">Airplanes counter</a>;
-- <a href="http://andriiheonia.github.io/pixfinder/beach" target="_blank">Dry coast area calculation</a>.
+- [Boats counter](http://andriiheonia.github.io/pixfinder/boats)
+- [Dry coast area calculation](http://andriiheonia.github.io/pixfinder/beach)
 
 ## How it works
 
-Pixfinder analyzes image (in a quite naive way) and extracts coordinates of each object. It detects objects by several criterias, the most important criteria is color.
+Pixfinder analyzes image (in a very naive way) and extracts coordinates of each object. It detects objects by several criterias, the most important criteria is a color.
 
-For example we have an aerial shot of planes and we want to know how many planes at the airport right now:
+For example, we have an image with boats and we want to count them:
 
-<img src="https://raw.githubusercontent.com/AndriiHeonia/pixfinder/master/readme-imgs/planes.jpg" />
+<img style="height: 300px;" src="https://raw.githubusercontent.com/AndriiHeonia/pixfinder/master/readme-imgs/boats.jpg" />
 
-To solve this problem we need to write several lines of code and Pixfinder will find all planes on the image. So let's find all planes and draw them all on the canvas:
+Let's find all boats and draw them on the canvas:
 
     var img = document.getElementById('img');
 
     pix.util.dom.onload(img, function() {
-        var planes = pix.findAll({
+        var objects = pix.findAll({
             img: img,
-            distance: 5,
-            colors: ['eff1f0'],
-            clearNoise: 50
+            distance: 10,
+            colors: ['d4dce1'],
+            clearNoise: 5,
+            tolerance: 50
         });
-        document.getElementById('count').innerHTML = planes.length;
-        planes.forEach(draw);
+        document.getElementById('count').innerHTML = objects.length;
+        objects.forEach(draw);
     });
 
-    function draw(plane) {
+    function draw(object) {
         var ctx = document.getElementById("canv").getContext("2d");
         ctx.beginPath();
-        plane.forEach(function(point) {
+        object.forEach(function(point) {
             ctx.arc(point.x, point.y, 1, 0, 2 * Math.PI);
         });
         ctx.stroke();
@@ -54,7 +53,8 @@ To solve this problem we need to write several lines of code and Pixfinder will 
     }
 
 Result:
-<img src="https://raw.githubusercontent.com/AndriiHeonia/pixfinder/master/readme-imgs/planes-result.png" />
+
+<img style="height: 400px;" src="https://raw.githubusercontent.com/AndriiHeonia/pixfinder/master/readme-imgs/boats-result.png" />
 
 ## API
 
@@ -288,9 +288,6 @@ Contains information about point.
     gulp            # build and watch for the src changes
 
 ## Changelog
-
-### 0.2.7 &mdash; 21.10.2023
-* Update readme
 
 ### 0.2.6 &mdash; 28.10.2019
 * Introduce pixfinder.d.ts

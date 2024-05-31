@@ -8,7 +8,7 @@
 
 var rbush = require('rbush'),
     bfs = require('img-bfs'),
-    hull = require('hull.js'),
+    hull = require('hull'),
     disjointSet = require('disjoint-set'),
     util = {
         canvas: require('./util/canvas'),
