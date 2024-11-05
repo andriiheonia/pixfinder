@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pixfinder - a JavaScript library that extracts objects by their colors</title>
+        <meta charset="utf-8" />
+        <script src="../dist/pixfinder.js"></script>
+    </head>
+    <body>
+        <h3>How many boats in the image?</h3>
+        <p>Pixfinder analyzed this image and thinks that there are <b id="count"></b> boats!</p>
+        <img id="img" width="500" height="374" src="boats.jpg" crossOrigin="Anonymous" />
+        <canvas id="canv" width="500" height="374" style="border:1px solid #d3d3d3; pointer-events: none;"></canvas>
+
+        <script>
+            window.onload = function() {
+                var img = document.getElementById('img');
+
+                pix.util.dom.onload(img, function() {
+                    var objects = pix.findAll({
+                        img: img,
+                        distance: 10,
+                        colors: ['d4dce1'],
+                        clearNoise: 5,
+                        tolerance: 50
+                    });
+                    document.getElementById('count').innerHTML = objects.length;
+                    objects.forEach(draw);
+                });
+
+                function draw(object) {
+                    var ctx = document.getElementById("canv").getContext("2d");
+                    ctx.beginPath();
+                    object.forEach(function(point) {
+                        ctx.arc(point.x, point.y, 1, 0, 2 * Math.PI);
+                    });
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+        </script>
+    </body>
+</html>
