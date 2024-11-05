@@ -281,6 +281,16 @@ Contains information about point.
 * check and ensure that behaviour with distance 1px is correct;
 * write tests.
 
+## NPM package
+
+This library is not hosted on npmjs.com, but you can use [GitHub URL](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#github-urls) as a dependency, e.g.:
+
+```
+"dependencies": {
+    "pix": "andriiheonia/pixfinder"
+}
+```
+
 ## Development
 
     npm install     # install dependencies
