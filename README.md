@@ -284,10 +284,12 @@ Contains information about point.
 ## Development
 
     npm install     # install dependencies
-    gulp build      # check the code with JSHint, run tests and build dist
-    gulp            # build and watch for the src changes
+    npm run build   # check code with JSHint and build dist file
 
 ## Changelog
+
+### 0.2.7 &mdash; 05.11.2024
+* Address security vulnerabilities
 
 ### 0.2.6 &mdash; 28.10.2019
 * Introduce pixfinder.d.ts

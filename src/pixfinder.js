@@ -1,5 +1,5 @@
 /*
- (c) 2014-2018, Andrii Heonia
+ (c) 2014-2024, Andrii Heonia
  Pixfinder, a JavaScript library for image analysis and object detection.
  https://github.com/AndriiHeonia/pixfinder
 */
