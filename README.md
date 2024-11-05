@@ -9,6 +9,7 @@ Pixfinder detects objects in the image by their color. It was developed for the 
     - [find](#find)
     - [util.dom](#utildom)
     - [Point](#point)
+- [NPM package](#npm-package)
 - [Development](#development)
 - [Changelog](#changelog)
 
@@ -294,7 +295,7 @@ This library is not hosted on npmjs.com, but you can use [GitHub URL](https://do
 ## Development
 
     npm install     # install dependencies
-    npm run build   # check code with JSHint and build dist file
+    npm run build   # build dist file
 
 ## Changelog
 
