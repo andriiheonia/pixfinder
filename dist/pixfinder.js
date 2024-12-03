@@ -708,17 +708,26 @@ var pix = (() => {
           if (format === void 0) {
             return pointset.slice();
           }
-          return pointset.map(function(pt) {
-            const _getXY = new Function("pt", "return [pt" + format[0] + ",pt" + format[1] + "];");
-            return _getXY(pt);
-          });
+          const xPropertyName = format[0].slice(1);
+          const yPropertyName = format[1].slice(1);
+          const _getXY = function(pt) {
+            return [pt[xPropertyName], pt[yPropertyName]];
+          };
+          return pointset.map(_getXY);
         },
         fromXy: function(pointset, format) {
           if (format === void 0) {
             return pointset.slice();
           }
+          const xPropertyName = format[0].slice(1);
+          const yPropertyName = format[1].slice(1);
+          const _getObj = function(pt) {
+            const obj = {};
+            obj[xPropertyName] = pt[0];
+            obj[yPropertyName] = pt[1];
+            return obj;
+          };
           return pointset.map(function(pt) {
-            const _getObj = new Function("pt", "const o = {}; o" + format[0] + "= pt[0]; o" + format[1] + "= pt[1]; return o;");
             return _getObj(pt);
           });
         }
