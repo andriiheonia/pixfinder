@@ -1,67 +1,15 @@
-Pixfinder detects objects in the image by their color. It was developed for the demo purpose only, it's not meant to be used in production.
+## NOTE: This library is unmaintained and deprecated.
 
-## Table of Contents
+<details>
+    <summary>Click to expand library description</summary>
 
-- [Demos](#demos)
-- [How it works](#how-it-works)
-- [API](#api)
-    - [findAll](#findall)
-    - [find](#find)
-    - [util.dom](#utildom)
-    - [Point](#point)
-- [NPM package](#npm-package)
-- [Development](#development)
-- [Changelog](#changelog)
-
-## Demos
-
-See live demos here:
-- [Boats counter](http://andriiheonia.github.io/pixfinder/boats)
-- [Dry coast area calculation](http://andriiheonia.github.io/pixfinder/beach)
-
-## How it works
-
-Pixfinder analyzes image (in a very naive way) and extracts coordinates of each object. It detects objects by several criterias, the most important criteria is a color.
-
-For example, we have an image with boats and we want to count them:
-
-<img style="height: 300px;" src="https://raw.githubusercontent.com/AndriiHeonia/pixfinder/master/readme-imgs/boats.jpg" />
-
-Let's find all boats and draw them on the canvas:
-
-    var img = document.getElementById('img');
-
-    pix.util.dom.onload(img, function() {
-        var objects = pix.findAll({
-            img: img,
-            distance: 10,
-            colors: ['d4dce1'],
-            clearNoise: 5,
-            tolerance: 50
-        });
-        document.getElementById('count').innerHTML = objects.length;
-        objects.forEach(draw);
-    });
-
-    function draw(object) {
-        var ctx = document.getElementById("canv").getContext("2d");
-        ctx.beginPath();
-        object.forEach(function(point) {
-            ctx.arc(point.x, point.y, 1, 0, 2 * Math.PI);
-        });
-        ctx.stroke();
-        ctx.closePath();
-    }
-
-Result:
-
-<img style="height: 400px;" src="https://raw.githubusercontent.com/AndriiHeonia/pixfinder/master/readme-imgs/boats-result.png" />
+This library is a prototype that detects objects in the image in a very naive way (by their color). It was developed for the demo purpose only, it doesn't produce reliable results and it's not meant to be used in production.
 
 ## API
 
 ### findAll
 
-Search all objects on the image.
+Search all objects in the image.
 
 <table>
     <thead>
@@ -138,7 +86,7 @@ Search all objects on the image.
             <td>concavity</td>
             <td>Number</td>
             <td>10</td>
-            <td>Determines the concavity of object edges. Internally Pixfinder uses <a href="https://github.com/AndriiHeonia/hull" target="_blank">hull.js</a> library to build object boundary. Please see hull.js documentation for more information about this parameter.</td>
+            <td>Determines the concavity of object edges. Internally Pixfinder uses <a href="https://github.com/andriiheonia/hull" target="_blank">hull.js</a> library to build object boundary. Please see hull.js documentation for more information about this parameter.</td>
         </tr>
     </tbody>
 </table>
@@ -216,7 +164,7 @@ Starts searching from the start point and returns one object that belongs to thi
             <td>concavity</td>
             <td>Number</td>
             <td>10</td>
-            <td>Determines the concavity of object edges. Internally Pixfinder uses <a href="https://github.com/AndriiHeonia/hull" target="_blank">hull.js</a> library to build object boundary. Please see hull.js documentation for more information about this parameter.</td>
+            <td>Determines the concavity of object edges. Internally Pixfinder uses <a href="https://github.com/andriiheonia/hull" target="_blank">hull.js</a> library to build object boundary. Please see hull.js documentation for more information about this parameter.</td>
         </tr>
     </tbody>
 </table>
@@ -273,34 +221,18 @@ Contains information about point.
     </tbody>
 </table>
 
-## To-do
-
-* write more demos;
-* improve performance;
-* make concavity param optional;
-* think about configurable color comparison function;
-* check and ensure that behaviour with distance 1px is correct;
-* write tests.
-
-## NPM package
-
-This library is not hosted on npmjs.com, but you can use [GitHub URL](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#github-urls) as a dependency, e.g.:
-
-```
-"dependencies": {
-    "pix": "andriiheonia/pixfinder"
-}
-```
-
 ## Development
 
     npm install     # install dependencies
-    npm run build   # build dist file
+    npm run build   # build library
 
 ## Changelog
 
+### 0.2.8 &mdash; 08.02.2025
+* Cleanup and deprecate
+
 ### 0.2.7 &mdash; 05.11.2024
-* Address security vulnerabilities
+* Remove vulnerable dev dependencies
 
 ### 0.2.6 &mdash; 28.10.2019
 * Introduce pixfinder.d.ts
@@ -327,3 +259,5 @@ This library is not hosted on npmjs.com, but you can use [GitHub URL](https://do
 ### 0.1.0 &mdash; 16.05.2014
 
 * First Pixfinder release (unstable alpha version).
+
+</details>

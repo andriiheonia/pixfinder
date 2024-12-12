@@ -2,22 +2,15 @@
     "name": "pixfinder",
     "version": "0.2.8",
     "description": "JavaScript library for extracting objects from images",
-    "homepage": "https://github.com/AndriiHeonia/pixfinder",
-    "keywords": [
-        "blob-detection",
-        "feature-detection",
-        "object-detection",
-        "algorithm",
-        "math"
-    ],
+    "homepage": "https://github.com/andriiheonia/pixfinder",
     "author": "Andrii Heonia",
     "repository": {
         "type": "git",
-        "url": "git://github.com/AndriiHeonia/pixfinder.git"
+        "url": "git://github.com/andriiheonia/pixfinder.git"
     },
     "main": "./src/pixfinder.js",
     "scripts": {
-        "build": "./node_modules/.bin/esbuild ./src/pixfinder.js --bundle --format=iife --global-name='pix' --outfile=./dist/pixfinder.js"
+        "build": "./node_modules/.bin/esbuild ./src/pixfinder.js --bundle --format=iife --global-name='pix' --outfile=./debug/pixfinder.js"
     },
     "dependencies": {
         "disjoint-set": "andriiheonia/disjoint-set",
@@ -27,5 +20,6 @@
     },
     "devDependencies": {
         "esbuild": "^0.24.0"
-    }
+    },
+    "private": true
 }

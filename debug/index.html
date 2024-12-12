@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pixfinder - a JavaScript library that extracts objects by their colors</title>
+        <title>Debug Page</title>
         <meta charset="utf-8" />
-        <script src="../dist/pixfinder.js"></script>
+        <script src="./pixfinder.js"></script>
     </head>
     <body>
-        <h3>How many boats in the image?</h3>
-        <p>Pixfinder analyzed this image and thinks that there are <b id="count"></b> boats!</p>
-        <img id="img" width="500" height="374" src="boats.jpg" crossOrigin="Anonymous" />
-        <canvas id="canv" width="500" height="374" style="border:1px solid #d3d3d3; pointer-events: none;"></canvas>
+        <h3>How many mandarins in the image?</h3>
+        <p>Pixfinder analyzed this image and thinks there are <b id="count"></b> mandarins.</p>
+        <img id="img" width="490" height="390" src="fruits.png" crossOrigin="Anonymous" />
+        <canvas id="canv" width="490" height="390" style="border:1px solid #d3d3d3; pointer-events: none;"></canvas>
 
         <script>
             window.onload = function() {
@@ -19,7 +19,7 @@
                     var objects = pix.findAll({
                         img: img,
                         distance: 10,
-                        colors: ['d4dce1'],
+                        colors: ['f03603'],
                         clearNoise: 5,
                         tolerance: 50
                     });
